@@ -6,7 +6,7 @@ const API_URL = `${process.env.REACT_APP_API_BASE_URL}/api/posts/feed`;
 
 export default function PostCard({ post, onClick }) {
     const readingTime = Math.ceil(post.content.split(/\s+/).length / 200);
-    const imageUrl = post.imageUrl ? `${API_BASE_URL}${post.imageUrl}` : null;
+    const imageUrl = post.imageUrl ? post.imageUrl : null;
     const clapCount = Array.isArray(post.claps) ? post.claps.length : 0;
 
     // Note: The parent component must include the necessary CSS classes defined in the <style> block.
@@ -49,7 +49,7 @@ export default function PostCard({ post, onClick }) {
             {imageUrl && (
                 <div className="post-image">
                     <img 
-                        src={imageUrl} 
+                        src={post.imageUrl} 
                         alt={post.title} 
                         onError={(e) => {
                             e.target.onerror = null;

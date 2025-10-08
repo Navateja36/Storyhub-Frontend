@@ -89,7 +89,7 @@ export default function Postdetailpage() {
     const isClapped = clapsArray.map(id => id.toString()).includes(loggedInUserId);
     const clapCount = clapsArray.length;
 
-    const finalUrl = post.imageUrl ? `${process.env.REACT_APP_API_BASE_URL}${post.imageUrl}` : null;
+    const finalUrl = post.imageUrl ? post.imageUrl : null;
 
     return (
         <div className="post-container">
