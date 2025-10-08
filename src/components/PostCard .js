@@ -51,10 +51,6 @@ export default function PostCard({ post, onClick }) {
                     <img 
                         src={post.imageUrl} 
                         alt={post.title} 
-                        onError={(e) => {
-                            e.target.onerror = null;
-                            e.target.src = 'https://placehold.co/180x180/e5e7eb/4b5563?text=Image'; 
-                        }}
                     />
                 </div>
             )}
