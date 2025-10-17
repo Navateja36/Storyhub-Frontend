@@ -23,17 +23,22 @@ export default function Postdetailpage() {
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}/${postId}`);
-
+            const response = await fetch(`${API_BASE_URL}/${postId}`, {
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            });
+            
+            if (response.status === 401 || response.status === 403) {
+                alert("Your session has expired. Please log in to view this post.");
+                navigate('/login'); // This will now work
+                return; // Stop the function to prevent further errors
+            }
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({ message: "Server communication failed." }));
                 throw new Error(errorData.message || `Failed with status ${response.status}`);
             }
-            if(response.status===401 || response.status===403){
-                alert("Your session has expired. Please log in to view this post.");
-                navigate('/login');
-                return; 
-            }
+            
 
             const data = await response.json();
             setPost(data.posts); // ✅ your backend returns { posts: post }
