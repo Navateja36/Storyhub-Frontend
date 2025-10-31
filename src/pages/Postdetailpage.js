@@ -11,6 +11,7 @@ export default function Postdetailpage() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    
     const loggedInUser = JSON.parse(localStorage.getItem('user'));
     const token = localStorage.getItem('token');
     const loggedInUserId = loggedInUser?._id;
@@ -28,7 +29,7 @@ export default function Postdetailpage() {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            
+
             if (response.status === 401 || response.status === 403) {
                 alert("Your session has expired. Please log in to view this post.");
                 navigate('/login'); // This will now work

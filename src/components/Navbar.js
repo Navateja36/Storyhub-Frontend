@@ -66,7 +66,7 @@ export default function Navbar() {
                     onClick={() => navigate('/')} 
                     style={{ fontSize: '24px', fontWeight: 'bold', cursor: 'pointer', color: '#333' }}
                 >
-                    MERN Blog
+                    Story Hub
                 </div>
 
                 {/* Navigation and Actions */}
